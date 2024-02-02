@@ -22,21 +22,20 @@ function App() {
       title:"blog Ketiga",
       body:'Halo ini blog pertma aku',
       author:"Jimmy Wira Arbaa",
-    },
-    // {
-    //   id: 4,
-    //   title:"blog Keempat",
-    //   body:'Halo ini blog pertama aku',
-    //   author:"Jimmy Wira Arbaa",
-    // },
+    },    
   ]);
+
+  const handleDelete = (id)=>{
+    const newBlog = blogs.filter((blog) => blog.id !== id);
+    setBlogs(newBlog);
+  };
   
   return (
     <div>
       <Navbar brand={title}/>
       <div className="container mt-3">
       <h1 className="text-primary">Hello World</h1>
-        <ItemBlog blogs={blogs}/>
+        <ItemBlog blogs={blogs} handleDelete={handleDelete}/>
       </div>
     </div>
   );
