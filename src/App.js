@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import ItemBlog from "./blog/ItemBlog";
 
@@ -29,6 +29,12 @@ function App() {
     const newBlog = blogs.filter((blog) => blog.id !== id);
     setBlogs(newBlog);
   };
+
+  useEffect(() => {
+    console.log("Trig Use Effect");
+    console.log(blogs);
+  })
+  
   
   return (
     <div>
