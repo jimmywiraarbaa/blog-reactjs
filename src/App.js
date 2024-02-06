@@ -1,39 +1,23 @@
-import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
-import ItemBlog from "./blog/ItemBlog";
+import Home from "./pages/Home";
+import AddBlog from "./pages/blog/AddBlog";
 
-import axios from "axios";
-import useFetch from "./hooks/useFetch";
+//Route
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 
 function App() {
-  const title = "Jim Kun";
-  const handleDelete = (id)=>{
-    console.log("Handle Delete");
-  };
-
-  const {
-    data: blogs,
-    loading,
-    error,
-  } = useFetch("http://localhost:8000/blogs");
-  
-  
+  const title = "Jim Kun";  
   return (
+    <BrowserRouter>
     <div>
       <Navbar brand={title}/>
-      <div className="container mt-3">
-      <h1 className="text-primary">Hello World</h1>
-      {error &&(
-        <h1 className="text-danger">Error when get data</h1>
-      )}
-      {loading &&(
-        <h1 className="text-muted">Loading...</h1>
-      )}
-      {blogs && (
-        <ItemBlog blogs={blogs} handleDelete={handleDelete}/>
-      )}
-      </div>
+      <Routes>
+        <Route path="/" element={<Home/>}></Route>
+        <Route path="/add" element={<AddBlog/>}></Route>
+      </Routes>
     </div>
+    </BrowserRouter>
   );
 }
 
