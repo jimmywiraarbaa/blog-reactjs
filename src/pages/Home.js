@@ -2,7 +2,7 @@ import useFetch from "../hooks/useFetch";
 import ItemBlog from "../components/blog/ItemBlog";
 
 const Home = () => {
-    const {
+  const {
     data: blogs,
     loading,
     error,
@@ -12,20 +12,20 @@ const Home = () => {
     console.log("handleDelete");
   };
 
-    return ( 
-        <div className="container mt-3">
-            <h1 className="text-primary">Hello World</h1>
-                {error &&(
+  return (
+    <div className="container mt-3">
+      <h1 className="text-primary">Hello World</h1>
+      {error && (
         <h1 className="text-danger">Error when get data</h1>
       )}
-      {loading &&(
+      {loading && (
         <h1 className="text-muted">Loading...</h1>
       )}
       {blogs && (
-        <ItemBlog blogs={blogs} handleDelete={handleDelete}/>
+        <ItemBlog blogs={blogs} handleDelete={handleDelete} />
       )}
-      </div>
-     );    
+    </div>
+  );
 };
 
 export default Home;
