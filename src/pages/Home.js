@@ -8,10 +8,6 @@ const Home = () => {
     error,
   } = useFetch("http://localhost:8000/blogs");
 
-  const handleDelete = () => {
-    console.log("handleDelete");
-  };
-
   return (
     <div className="container mt-3">
       <h1 className="text-primary">Hello World</h1>
@@ -22,7 +18,7 @@ const Home = () => {
         <h1 className="text-muted">Loading...</h1>
       )}
       {blogs && (
-        <ItemBlog blogs={blogs} handleDelete={handleDelete} />
+        <ItemBlog blogs={blogs} />
       )}
     </div>
   );
