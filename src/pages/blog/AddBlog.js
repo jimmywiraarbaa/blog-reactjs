@@ -1,15 +1,30 @@
+import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AddBlog = () => {
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("");
-    const [author, setAuthor] = useState("jimmy");
+    const [author, setAuthor] = useState("");
 
-    const handleSubmit = (e) => {
+    const navigate = useNavigate();
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const blog = { title, body, author };
 
-        console.log(blog);
+        // console.log(blog);
+        try {
+            const res = await axios.post("http://localhost:8000/blogs",
+                JSON.stringify(blog),
+                {
+                    headers: { 'Content-Type': "application/json" }
+                }
+            );
+            navigate("/");
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     return (
